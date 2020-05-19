@@ -1399,6 +1399,9 @@ class Users(models.Model):
     machine_id = models.CharField(max_length=64)
     home_room = models.IntegerField()
 
+    def __str__(self):
+        return self.username
+
     class Meta:
         managed = False
         db_table = 'users'
@@ -1477,6 +1480,7 @@ class UsersFavoriteRooms(models.Model):
         managed = False
         db_table = 'users_favorite_rooms'
         unique_together = (('user_id', 'room_id'),)
+        verbose_name_plural = "Users Favorite Rooms"
 
 
 class UsersIgnored(models.Model):
@@ -1486,6 +1490,7 @@ class UsersIgnored(models.Model):
     class Meta:
         managed = False
         db_table = 'users_ignored'
+        verbose_name_plural = "Users Ignored"
 
 
 class UsersNavigatorSettings(models.Model):
@@ -1497,6 +1502,7 @@ class UsersNavigatorSettings(models.Model):
     class Meta:
         managed = False
         db_table = 'users_navigator_settings'
+        verbose_name_plural = "Users Navigator Settings"
 
 
 class UsersPets(models.Model):
@@ -1539,6 +1545,7 @@ class UsersPets(models.Model):
     class Meta:
         managed = False
         db_table = 'users_pets'
+        verbose_name_plural = "Users Pets"
 
 
 class UsersRecipes(models.Model):
@@ -1549,6 +1556,7 @@ class UsersRecipes(models.Model):
         managed = False
         db_table = 'users_recipes'
         unique_together = (('user_id', 'recipe'),)
+        verbose_name_plural = "Users Recipes"
 
 
 class UsersSavedSearches(models.Model):
@@ -1559,6 +1567,7 @@ class UsersSavedSearches(models.Model):
     class Meta:
         managed = False
         db_table = 'users_saved_searches'
+        verbose_name_plural = "Users Saved Searches"
 
 
 class UsersSettings(models.Model):
@@ -1612,6 +1621,7 @@ class UsersSettings(models.Model):
     class Meta:
         managed = False
         db_table = 'users_settings'
+        verbose_name_plural = "Users Settings"
 
 
 class UsersTargetOfferPurchases(models.Model):
@@ -1625,6 +1635,7 @@ class UsersTargetOfferPurchases(models.Model):
         managed = False
         db_table = 'users_target_offer_purchases'
         unique_together = (('user_id', 'offer_id'),)
+        verbose_name_plural = "Users Target Offer Purchases"
 
 
 class UsersWardrobe(models.Model):
@@ -1646,6 +1657,7 @@ class VoucherHistory(models.Model):
     class Meta:
         managed = False
         db_table = 'voucher_history'
+        verbose_name_plural = "Voucher History"
 
 
 class Vouchers(models.Model):
@@ -1660,6 +1672,7 @@ class Vouchers(models.Model):
     class Meta:
         managed = False
         db_table = 'vouchers'
+        verbose_name_plural = "Vouchers"
 
 
 class WiredRewardsGiven(models.Model):
@@ -1674,7 +1687,7 @@ class WiredRewardsGiven(models.Model):
 
 
 class Wordfilter(models.Model):
-    key = models.CharField(unique=True, max_length=255)
+    key = models.CharField(unique=True, max_length=255, primary_key=True)
     replacement = models.CharField(max_length=16)
     hide = models.CharField(max_length=1)
     report = models.CharField(max_length=1)
@@ -1694,3 +1707,4 @@ class YoutubePlaylists(models.Model):
         managed = False
         db_table = 'youtube_playlists'
         unique_together = (('item_id', 'playlist_id', 'order'),)
+        verbose_name_plural = "Youtube Playlists"

@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'falconcms.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'morningstar',
+        'NAME': 'maplestory',
         'USER': 'root',
         'PASSWORD': 'root',
         'HOST': '127.0.0.1',
