@@ -26,6 +26,7 @@ class Achievements(models.Model):
         managed = False
         db_table = 'achievements'
         unique_together = (('name', 'level'),)
+        verbose_name_plural = 'Achievements'
 
 
 class AchievementsTalents(models.Model):
@@ -59,12 +60,13 @@ class Bans(models.Model):
 
 
 class BotServes(models.Model):
-    keys = models.CharField(max_length=128)
+    keys = models.CharField(max_length=128, primary_key=True)
     item = models.IntegerField()
 
     class Meta:
         managed = False
         db_table = 'bot_serves'
+        verbose_name_plural = 'Bot Serves'
 
 
 class Bots(models.Model):
@@ -90,6 +92,7 @@ class Bots(models.Model):
     class Meta:
         managed = False
         db_table = 'bots'
+        verbose_name_plural = 'Bots'
 
 
 class CalendarRewards(models.Model):
@@ -103,16 +106,18 @@ class CalendarRewards(models.Model):
     class Meta:
         managed = False
         db_table = 'calendar_rewards'
+        verbose_name_plural = 'Calendar Rewards'
 
 
 class CalendarRewardsClaimed(models.Model):
-    user_id = models.IntegerField()
+    user_id = models.IntegerField(primary_key=True)
     reward_id = models.IntegerField()
     timestamp = models.IntegerField()
 
     class Meta:
         managed = False
         db_table = 'calendar_rewards_claimed'
+        verbose_name_plural = 'Calendar Rewards Claimed'
 
 
 class CameraWeb(models.Model):
@@ -124,6 +129,7 @@ class CameraWeb(models.Model):
     class Meta:
         managed = False
         db_table = 'camera_web'
+        verbose_name_plural = 'Camera Web'
 
 
 class CatalogClothing(models.Model):
@@ -189,7 +195,7 @@ class CatalogItems(models.Model):
 
 
 class CatalogItemsLimited(models.Model):
-    catalog_item_id = models.IntegerField()
+    catalog_item_id = models.IntegerField(primary_key=True)
     number = models.IntegerField()
     user_id = models.IntegerField()
     timestamp = models.IntegerField()
@@ -260,7 +266,7 @@ class ChatlogsPrivate(models.Model):
 
 
 class ChatlogsRoom(models.Model):
-    room_id = models.IntegerField()
+    room_id = models.IntegerField(primary_key=True)
     user_from_id = models.IntegerField()
     user_to_id = models.IntegerField()
     message = models.CharField(max_length=255)
@@ -273,7 +279,7 @@ class ChatlogsRoom(models.Model):
 
 class Commandlogs(models.Model):
     user_id = models.IntegerField()
-    timestamp = models.IntegerField()
+    timestamp = models.IntegerField(primary_key=True)
     command = models.CharField(max_length=255)
     params = models.CharField(max_length=255)
     succes = models.CharField(max_length=3)
@@ -284,7 +290,7 @@ class Commandlogs(models.Model):
 
 
 class CraftingAltarsRecipes(models.Model):
-    altar_id = models.IntegerField()
+    altar_id = models.IntegerField(primary_key=True)
     recipe_id = models.IntegerField()
 
     class Meta:
@@ -308,7 +314,7 @@ class CraftingRecipes(models.Model):
 
 
 class CraftingRecipesIngredients(models.Model):
-    recipe_id = models.IntegerField()
+    recipe_id = models.IntegerField(primary_key=True)
     item_id = models.IntegerField()
     amount = models.IntegerField()
 
@@ -548,7 +554,7 @@ class ItemsHighscoreData(models.Model):
 
 
 class ItemsHoppers(models.Model):
-    item_id = models.IntegerField()
+    item_id = models.IntegerField(primary_key=True)
     base_item = models.IntegerField()
 
     class Meta:
@@ -557,7 +563,7 @@ class ItemsHoppers(models.Model):
 
 
 class ItemsPresents(models.Model):
-    item_id = models.IntegerField()
+    item_id = models.IntegerField(primary_key=True)
     base_item_reward = models.IntegerField()
 
     class Meta:
@@ -566,7 +572,7 @@ class ItemsPresents(models.Model):
 
 
 class ItemsTeleports(models.Model):
-    teleport_one_id = models.IntegerField()
+    teleport_one_id = models.IntegerField(primary_key=True)
     teleport_two_id = models.IntegerField()
 
     class Meta:
@@ -622,7 +628,7 @@ class NamechangeLog(models.Model):
     user_id = models.IntegerField()
     old_name = models.CharField(max_length=32)
     new_name = models.CharField(max_length=32)
-    timestamp = models.IntegerField()
+    timestamp = models.IntegerField(primary_key=True)
 
     class Meta:
         managed = False
@@ -668,7 +674,7 @@ class NavigatorPubliccats(models.Model):
 
 class NavigatorPublics(models.Model):
     public_cat_id = models.IntegerField()
-    room_id = models.IntegerField()
+    room_id = models.IntegerField(primary_key=True)
     visible = models.CharField(max_length=1)
 
     class Meta:
@@ -911,7 +917,7 @@ class PetActions(models.Model):
 
 
 class PetBreeding(models.Model):
-    pet_id = models.IntegerField()
+    pet_id = models.IntegerField(primary_key=True)
     offspring_id = models.IntegerField()
 
     class Meta:
@@ -920,7 +926,7 @@ class PetBreeding(models.Model):
 
 
 class PetBreedingRaces(models.Model):
-    pet_type = models.IntegerField()
+    pet_type = models.IntegerField(primary_key=True)
     rarity_level = models.IntegerField()
     breed = models.IntegerField()
 
@@ -930,7 +936,7 @@ class PetBreedingRaces(models.Model):
 
 
 class PetBreeds(models.Model):
-    race = models.IntegerField()
+    race = models.IntegerField(primary_key=True)
     color_one = models.IntegerField()
     color_two = models.IntegerField()
     has_color_one = models.CharField(max_length=1)
@@ -943,7 +949,7 @@ class PetBreeds(models.Model):
 
 
 class PetCommands(models.Model):
-    pet_id = models.IntegerField()
+    pet_id = models.IntegerField(primary_key=True)
     command_id = models.IntegerField()
 
     class Meta:
@@ -965,7 +971,7 @@ class PetCommandsData(models.Model):
 
 
 class PetDrinks(models.Model):
-    pet_id = models.IntegerField()
+    pet_id = models.IntegerField(primary_key=True)
     item_id = models.IntegerField()
 
     class Meta:
@@ -974,7 +980,7 @@ class PetDrinks(models.Model):
 
 
 class PetFoods(models.Model):
-    pet_id = models.IntegerField()
+    pet_id = models.IntegerField(primary_key=True)
     item_id = models.IntegerField()
 
     class Meta:
@@ -983,7 +989,7 @@ class PetFoods(models.Model):
 
 
 class PetItems(models.Model):
-    pet_id = models.IntegerField()
+    pet_id = models.IntegerField(primary_key=True)
     item_id = models.IntegerField()
 
     class Meta:
@@ -992,7 +998,7 @@ class PetItems(models.Model):
 
 
 class PetVocals(models.Model):
-    pet_id = models.IntegerField()
+    pet_id = models.IntegerField(primary_key=True)
     type = models.CharField(max_length=15)
     message = models.CharField(max_length=100)
 
@@ -1002,7 +1008,7 @@ class PetVocals(models.Model):
 
 
 class Polls(models.Model):
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=255, primary_key=True)
     thanks_message = models.CharField(max_length=255)
     reward_badge = models.CharField(max_length=10)
 
@@ -1012,7 +1018,7 @@ class Polls(models.Model):
 
 
 class PollsAnswers(models.Model):
-    poll_id = models.IntegerField()
+    poll_id = models.IntegerField(primary_key=True)
     user_id = models.IntegerField()
     question_id = models.IntegerField()
     answer = models.CharField(max_length=255)
@@ -1024,7 +1030,7 @@ class PollsAnswers(models.Model):
 
 
 class PollsQuestions(models.Model):
-    parent_id = models.IntegerField()
+    parent_id = models.IntegerField(primary_key=True)
     poll_id = models.IntegerField()
     order = models.IntegerField()
     question = models.CharField(max_length=255)
@@ -1039,7 +1045,7 @@ class PollsQuestions(models.Model):
 
 class RecyclerPrizes(models.Model):
     rarity = models.IntegerField()
-    item_id = models.IntegerField()
+    item_id = models.IntegerField(primary_key=True)
 
     class Meta:
         managed = False
@@ -1047,7 +1053,7 @@ class RecyclerPrizes(models.Model):
 
 
 class RoomBans(models.Model):
-    room_id = models.IntegerField()
+    room_id = models.IntegerField(primary_key=True)
     user_id = models.IntegerField()
     ends = models.IntegerField()
 
@@ -1057,7 +1063,7 @@ class RoomBans(models.Model):
 
 
 class RoomEnterLog(models.Model):
-    room_id = models.IntegerField()
+    room_id = models.IntegerField(primary_key=True)
     user_id = models.IntegerField()
     timestamp = models.IntegerField()
     exit_timestamp = models.IntegerField()
@@ -1068,7 +1074,7 @@ class RoomEnterLog(models.Model):
 
 
 class RoomGameScores(models.Model):
-    room_id = models.IntegerField()
+    room_id = models.IntegerField(primary_key=True)
     game_start_timestamp = models.IntegerField()
     game_name = models.CharField(max_length=64)
     user_id = models.IntegerField()
@@ -1109,7 +1115,7 @@ class RoomModelsCustom(models.Model):
 
 
 class RoomMutes(models.Model):
-    room_id = models.IntegerField()
+    room_id = models.IntegerField(primary_key=True)
     user_id = models.IntegerField()
     ends = models.IntegerField()
 
@@ -1119,7 +1125,7 @@ class RoomMutes(models.Model):
 
 
 class RoomPromotions(models.Model):
-    room_id = models.IntegerField(unique=True)
+    room_id = models.IntegerField(unique=True, primary_key=True)
     title = models.CharField(max_length=127)
     description = models.CharField(max_length=1024)
     end_timestamp = models.IntegerField()
@@ -1132,7 +1138,7 @@ class RoomPromotions(models.Model):
 
 
 class RoomRights(models.Model):
-    room_id = models.IntegerField()
+    room_id = models.IntegerField(primary_key=True)
     user_id = models.IntegerField()
 
     class Meta:
@@ -1145,7 +1151,7 @@ class RoomTradeLog(models.Model):
     user_two_id = models.IntegerField()
     user_one_ip = models.CharField(max_length=45)
     user_two_ip = models.CharField(max_length=45)
-    timestamp = models.IntegerField()
+    timestamp = models.IntegerField(primary_key=True)
     user_one_item_count = models.IntegerField()
     user_two_item_count = models.IntegerField()
 
@@ -1166,7 +1172,7 @@ class RoomTradeLogItems(models.Model):
 
 
 class RoomTraxPlaylist(models.Model):
-    room_id = models.IntegerField()
+    room_id = models.IntegerField(primary_key=True)
     item_id = models.IntegerField()
 
     class Meta:
@@ -1176,7 +1182,7 @@ class RoomTraxPlaylist(models.Model):
 
 class RoomVotes(models.Model):
     user_id = models.IntegerField()
-    room_id = models.IntegerField()
+    room_id = models.IntegerField(primary_key=True)
 
     class Meta:
         managed = False
@@ -1184,7 +1190,7 @@ class RoomVotes(models.Model):
 
 
 class RoomWordfilter(models.Model):
-    room_id = models.IntegerField()
+    room_id = models.IntegerField(primary_key=True)
     word = models.CharField(max_length=25)
 
     class Meta:
@@ -1256,7 +1262,7 @@ class SanctionLevels(models.Model):
 class Sanctions(models.Model):
     habbo_id = models.IntegerField()
     sanction_level = models.IntegerField()
-    probation_timestamp = models.IntegerField()
+    probation_timestamp = models.IntegerField(primary_key=True)
     reason = models.CharField(max_length=255)
     trade_locked_until = models.IntegerField()
     is_muted = models.IntegerField()
@@ -1269,7 +1275,7 @@ class Sanctions(models.Model):
 
 class Soundtracks(models.Model):
     code = models.CharField(max_length=32)
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, primary_key=True)
     author = models.CharField(max_length=50)
     track = models.TextField()
     length = models.IntegerField()
@@ -1280,7 +1286,7 @@ class Soundtracks(models.Model):
 
 
 class SpecialEnables(models.Model):
-    effect_id = models.IntegerField(unique=True)
+    effect_id = models.IntegerField(unique=True, primary_key=True)
     min_rank = models.IntegerField()
 
     class Meta:
@@ -1363,7 +1369,7 @@ class SupportTickets(models.Model):
 
 
 class UserWindowSettings(models.Model):
-    user_id = models.IntegerField()
+    user_id = models.IntegerField(primary_key=True)
     x = models.IntegerField()
     y = models.IntegerField()
     width = models.IntegerField()
@@ -1405,10 +1411,11 @@ class Users(models.Model):
     class Meta:
         managed = False
         db_table = 'users'
+        verbose_name_plural = 'Users'
 
 
 class UsersAchievements(models.Model):
-    user_id = models.IntegerField()
+    user_id = models.IntegerField(primary_key=True)
     achievement_name = models.CharField(max_length=255)
     progress = models.IntegerField()
 
@@ -1418,7 +1425,7 @@ class UsersAchievements(models.Model):
 
 
 class UsersAchievementsQueue(models.Model):
-    user_id = models.IntegerField()
+    user_id = models.IntegerField(primary_key=True)
     achievement_id = models.IntegerField()
     amount = models.IntegerField()
 
@@ -1439,7 +1446,7 @@ class UsersBadges(models.Model):
 
 
 class UsersClothing(models.Model):
-    user_id = models.IntegerField()
+    user_id = models.IntegerField(primary_key=True)
     clothing_id = models.IntegerField()
 
     class Meta:
@@ -1460,7 +1467,7 @@ class UsersCurrency(models.Model):
 
 
 class UsersEffects(models.Model):
-    user_id = models.IntegerField()
+    user_id = models.IntegerField(primary_key=True)
     effect = models.IntegerField()
     duration = models.IntegerField()
     activation_timestamp = models.IntegerField()
@@ -1473,7 +1480,7 @@ class UsersEffects(models.Model):
 
 
 class UsersFavoriteRooms(models.Model):
-    user_id = models.IntegerField()
+    user_id = models.IntegerField(primary_key=True)
     room_id = models.IntegerField()
 
     class Meta:
@@ -1484,7 +1491,7 @@ class UsersFavoriteRooms(models.Model):
 
 
 class UsersIgnored(models.Model):
-    user_id = models.IntegerField()
+    user_id = models.IntegerField(primary_key=True)
     target_id = models.IntegerField()
 
     class Meta:
@@ -1494,7 +1501,7 @@ class UsersIgnored(models.Model):
 
 
 class UsersNavigatorSettings(models.Model):
-    user_id = models.IntegerField()
+    user_id = models.IntegerField(primary_key=True)
     caption = models.CharField(max_length=128)
     list_type = models.CharField(max_length=10)
     display = models.CharField(max_length=9)
@@ -1549,7 +1556,7 @@ class UsersPets(models.Model):
 
 
 class UsersRecipes(models.Model):
-    user_id = models.IntegerField()
+    user_id = models.IntegerField(primary_key=True)
     recipe = models.IntegerField()
 
     class Meta:
@@ -1625,7 +1632,7 @@ class UsersSettings(models.Model):
 
 
 class UsersTargetOfferPurchases(models.Model):
-    user_id = models.IntegerField()
+    user_id = models.IntegerField(primary_key=True)
     offer_id = models.IntegerField()
     state = models.IntegerField()
     amount = models.IntegerField()
@@ -1679,7 +1686,7 @@ class WiredRewardsGiven(models.Model):
     wired_item = models.IntegerField()
     user_id = models.IntegerField()
     reward_id = models.IntegerField()
-    timestamp = models.IntegerField()
+    timestamp = models.IntegerField(primary_key=True)
 
     class Meta:
         managed = False
@@ -1699,7 +1706,7 @@ class Wordfilter(models.Model):
 
 
 class YoutubePlaylists(models.Model):
-    item_id = models.IntegerField()
+    item_id = models.IntegerField(primary_key=True)
     playlist_id = models.CharField(max_length=255)
     order = models.IntegerField()
 
