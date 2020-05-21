@@ -1,10 +1,19 @@
 from django.contrib import admin
+from django.contrib.admin import AdminSite
 
 from falcon import models
 
 
-class AchievementsAdmin(admin.ModelAdmin):
+class FalconAdminSite(AdminSite):
+    site_header = 'Housekeeping'
+    site_title = 'FalconCMS'
+    index_title = 'Housekeeping'
 
+
+admin_site = FalconAdminSite(name='housekeeping')
+
+
+class AchievementsAdmin(admin.ModelAdmin):
     list_display = (
         'name',
         'category',
@@ -18,7 +27,6 @@ class AchievementsAdmin(admin.ModelAdmin):
 
 
 class AchievementsTalentsAdmin(admin.ModelAdmin):
-
     list_display = (
         'id',
         'type',
@@ -42,7 +50,6 @@ class AchievementsTalentsAdmin(admin.ModelAdmin):
 
 
 class BansAdmin(admin.ModelAdmin):
-
     list_display = (
         'user_id',
         'ip',
@@ -68,13 +75,11 @@ class BansAdmin(admin.ModelAdmin):
 
 
 class BotServesAdmin(admin.ModelAdmin):
-
     list_display = ('keys', 'item')
     list_filter = ('keys', 'item')
 
 
 class BotsAdmin(admin.ModelAdmin):
-
     list_display = (
         'id',
         'user_id',
@@ -121,7 +126,6 @@ class BotsAdmin(admin.ModelAdmin):
 
 
 class CalendarRewardsAdmin(admin.ModelAdmin):
-
     list_display = (
         'id',
         'custom_image',
@@ -143,25 +147,21 @@ class CalendarRewardsAdmin(admin.ModelAdmin):
 
 
 class CalendarRewardsClaimedAdmin(admin.ModelAdmin):
-
     list_display = ('user_id', 'reward_id', 'timestamp')
     list_filter = ('user_id', 'reward_id', 'timestamp')
 
 
 class CameraWebAdmin(admin.ModelAdmin):
-
     list_display = ('id', 'user_id', 'room_id', 'timestamp', 'url')
     list_filter = ('id', 'user_id', 'room_id', 'timestamp', 'url')
 
 
 class CatalogClothingAdmin(admin.ModelAdmin):
-
     list_display = ('id', 'name', 'setid')
     search_fields = ('name',)
 
 
 class CatalogClubOffersAdmin(admin.ModelAdmin):
-
     list_display = (
         'id',
         'enabled',
@@ -188,7 +188,6 @@ class CatalogClubOffersAdmin(admin.ModelAdmin):
 
 
 class CatalogFeaturedPagesAdmin(admin.ModelAdmin):
-
     list_display = (
         'slot_id',
         'image',
@@ -212,7 +211,6 @@ class CatalogFeaturedPagesAdmin(admin.ModelAdmin):
 
 
 class CatalogItemsAdmin(admin.ModelAdmin):
-
     list_display = (
         'id',
         'item_ids',
@@ -234,7 +232,6 @@ class CatalogItemsAdmin(admin.ModelAdmin):
 
 
 class CatalogItemsLimitedAdmin(admin.ModelAdmin):
-
     list_display = (
         'catalog_item_id',
         'number',
@@ -252,7 +249,6 @@ class CatalogItemsLimitedAdmin(admin.ModelAdmin):
 
 
 class CatalogPagesAdmin(admin.ModelAdmin):
-
     list_display = (
         'id',
         'parent_id',
@@ -280,7 +276,6 @@ class CatalogPagesAdmin(admin.ModelAdmin):
 
 
 class CatalogTargetOffersAdmin(admin.ModelAdmin):
-
     list_display = (
         'id',
         'offer_code',
@@ -314,7 +309,6 @@ class CatalogTargetOffersAdmin(admin.ModelAdmin):
 
 
 class ChatlogsPrivateAdmin(admin.ModelAdmin):
-
     list_display = (
         'id',
         'user_from_id',
@@ -332,7 +326,6 @@ class ChatlogsPrivateAdmin(admin.ModelAdmin):
 
 
 class ChatlogsRoomAdmin(admin.ModelAdmin):
-
     list_display = (
         'room_id',
         'user_from_id',
@@ -344,19 +337,16 @@ class ChatlogsRoomAdmin(admin.ModelAdmin):
 
 
 class CommandlogsAdmin(admin.ModelAdmin):
-
     list_display = ('user_id', 'timestamp', 'command', 'params', 'succes')
     list_filter = ('user_id', 'timestamp', 'command', 'params', 'succes')
 
 
 class CraftingAltarsRecipesAdmin(admin.ModelAdmin):
-
     list_display = ('altar_id', 'recipe_id')
     list_filter = ('altar_id', 'recipe_id')
 
 
 class CraftingRecipesAdmin(admin.ModelAdmin):
-
     list_display = (
         'id',
         'product_name',
@@ -380,13 +370,11 @@ class CraftingRecipesAdmin(admin.ModelAdmin):
 
 
 class CraftingRecipesIngredientsAdmin(admin.ModelAdmin):
-
     list_display = ('recipe_id', 'item_id', 'amount')
     list_filter = ('recipe_id',)
 
 
 class EmulatorErrorsAdmin(admin.ModelAdmin):
-
     list_display = (
         'id',
         'timestamp',
@@ -398,34 +386,28 @@ class EmulatorErrorsAdmin(admin.ModelAdmin):
 
 
 class EmulatorSettingsAdmin(admin.ModelAdmin):
-
     list_display = ('key', 'value')
 
 
 class EmulatorTextsAdmin(admin.ModelAdmin):
-
     list_display = ('key', 'value')
 
 
 class GiftWrappersAdmin(admin.ModelAdmin):
-
     list_display = ('id', 'sprite_id', 'item_id', 'type')
     list_filter = ('id', 'sprite_id', 'item_id', 'type')
 
 
 class GroupsItemsAdmin(admin.ModelAdmin):
-
     list_display = ('type', 'id', 'firstvalue', 'secondvalue', 'enabled')
 
 
 class GuildForumViewsAdmin(admin.ModelAdmin):
-
     list_display = ('id', 'user_id', 'guild_id', 'timestamp')
     list_filter = ('id', 'user_id', 'guild_id', 'timestamp')
 
 
 class GuildsAdmin(admin.ModelAdmin):
-
     list_display = (
         'id',
         'user_id',
@@ -466,12 +448,10 @@ class GuildsAdmin(admin.ModelAdmin):
 
 
 class GuildsElementsAdmin(admin.ModelAdmin):
-
     list_display = ('id', 'firstvalue', 'secondvalue', 'type', 'enabled')
 
 
 class GuildsForumsCommentsAdmin(admin.ModelAdmin):
-
     list_display = (
         'id',
         'thread_id',
@@ -493,7 +473,6 @@ class GuildsForumsCommentsAdmin(admin.ModelAdmin):
 
 
 class GuildsForumsThreadsAdmin(admin.ModelAdmin):
-
     list_display = (
         'id',
         'guild_id',
@@ -523,13 +502,11 @@ class GuildsForumsThreadsAdmin(admin.ModelAdmin):
 
 
 class GuildsMembersAdmin(admin.ModelAdmin):
-
     list_display = ('id', 'guild_id', 'user_id', 'level_id', 'member_since')
     list_filter = ('id', 'guild_id', 'user_id', 'level_id', 'member_since')
 
 
 class HotelviewNewsAdmin(admin.ModelAdmin):
-
     list_display = (
         'id',
         'title',
@@ -551,7 +528,6 @@ class HotelviewNewsAdmin(admin.ModelAdmin):
 
 
 class ItemsAdmin(admin.ModelAdmin):
-
     list_display = (
         'id',
         'user_id',
@@ -570,7 +546,6 @@ class ItemsAdmin(admin.ModelAdmin):
 
 
 class ItemsBaseAdmin(admin.ModelAdmin):
-
     list_display = (
         'id',
         'sprite_id',
@@ -601,7 +576,6 @@ class ItemsBaseAdmin(admin.ModelAdmin):
 
 
 class ItemsCrackableAdmin(admin.ModelAdmin):
-
     list_display = (
         'item_id',
         'count',
@@ -625,7 +599,6 @@ class ItemsCrackableAdmin(admin.ModelAdmin):
 
 
 class ItemsHighscoreDataAdmin(admin.ModelAdmin):
-
     list_display = (
         'id',
         'item_id',
@@ -645,24 +618,20 @@ class ItemsHighscoreDataAdmin(admin.ModelAdmin):
 
 
 class ItemsHoppersAdmin(admin.ModelAdmin):
-
     list_display = ('item_id', 'base_item')
     list_filter = ('item_id', 'base_item')
 
 
 class ItemsPresentsAdmin(admin.ModelAdmin):
-
     list_display = ('item_id', 'base_item_reward')
     list_filter = ('item_id', 'base_item_reward')
 
 
 class ItemsTeleportsAdmin(admin.ModelAdmin):
-
     list_display = ('teleport_one_id', 'teleport_two_id')
 
 
 class MarketplaceItemsAdmin(admin.ModelAdmin):
-
     list_display = (
         'id',
         'item_id',
@@ -684,13 +653,11 @@ class MarketplaceItemsAdmin(admin.ModelAdmin):
 
 
 class MessengerFriendrequestsAdmin(admin.ModelAdmin):
-
     list_display = ('id', 'user_to_id', 'user_from_id')
     list_filter = ('id', 'user_to_id', 'user_from_id')
 
 
 class MessengerFriendshipsAdmin(admin.ModelAdmin):
-
     list_display = (
         'id',
         'user_one_id',
@@ -708,25 +675,21 @@ class MessengerFriendshipsAdmin(admin.ModelAdmin):
 
 
 class MessengerOfflineAdmin(admin.ModelAdmin):
-
     list_display = ('id', 'user_id', 'user_from_id', 'message', 'sended_on')
     list_filter = ('id', 'user_id', 'user_from_id', 'message', 'sended_on')
 
 
 class NamechangeLogAdmin(admin.ModelAdmin):
-
     list_display = ('user_id', 'old_name', 'new_name', 'timestamp')
     list_filter = ('user_id', 'old_name', 'new_name', 'timestamp')
 
 
 class NavigatorFilterAdmin(admin.ModelAdmin):
-
     list_display = ('key', 'field', 'compare', 'database_query')
     list_filter = ('key', 'field', 'compare', 'database_query')
 
 
 class NavigatorFlatcatsAdmin(admin.ModelAdmin):
-
     list_display = (
         'id',
         'min_rank',
@@ -752,26 +715,22 @@ class NavigatorFlatcatsAdmin(admin.ModelAdmin):
 
 
 class NavigatorPubliccatsAdmin(admin.ModelAdmin):
-
     list_display = ('id', 'name', 'image', 'visible', 'order_num')
     list_filter = ('id', 'name', 'image', 'visible', 'order_num')
     search_fields = ('name',)
 
 
 class NavigatorPublicsAdmin(admin.ModelAdmin):
-
     list_display = ('public_cat_id', 'room_id', 'visible')
     list_filter = ('public_cat_id', 'room_id', 'visible')
 
 
 class NuxGiftsAdmin(admin.ModelAdmin):
-
     list_display = ('id', 'type', 'value', 'image')
     list_filter = ('id', 'type', 'value', 'image')
 
 
 class OldGuildsForumsAdmin(admin.ModelAdmin):
-
     list_display = (
         'id',
         'guild_id',
@@ -799,7 +758,6 @@ class OldGuildsForumsAdmin(admin.ModelAdmin):
 
 
 class OldGuildsForumsCommentsAdmin(admin.ModelAdmin):
-
     list_display = (
         'id',
         'thread_id',
@@ -821,7 +779,6 @@ class OldGuildsForumsCommentsAdmin(admin.ModelAdmin):
 
 
 class PermissionsAdmin(admin.ModelAdmin):
-
     list_display = (
         'id',
         'rank_name',
@@ -1179,7 +1136,6 @@ class PermissionsAdmin(admin.ModelAdmin):
 
 
 class PetActionsAdmin(admin.ModelAdmin):
-
     list_display = (
         'pet_type',
         'pet_name',
@@ -1192,19 +1148,16 @@ class PetActionsAdmin(admin.ModelAdmin):
 
 
 class PetBreedingAdmin(admin.ModelAdmin):
-
     list_display = ('pet_id', 'offspring_id')
     list_filter = ('pet_id', 'offspring_id')
 
 
 class PetBreedingRacesAdmin(admin.ModelAdmin):
-
     list_display = ('pet_type', 'rarity_level', 'breed')
     list_filter = ('pet_type', 'rarity_level', 'breed')
 
 
 class PetBreedsAdmin(admin.ModelAdmin):
-
     list_display = (
         'race',
         'color_one',
@@ -1215,13 +1168,11 @@ class PetBreedsAdmin(admin.ModelAdmin):
 
 
 class PetCommandsAdmin(admin.ModelAdmin):
-
     list_display = ('pet_id', 'command_id')
     list_filter = ('pet_id', 'command_id')
 
 
 class PetCommandsDataAdmin(admin.ModelAdmin):
-
     list_display = (
         'command_id',
         'text',
@@ -1233,43 +1184,36 @@ class PetCommandsDataAdmin(admin.ModelAdmin):
 
 
 class PetDrinksAdmin(admin.ModelAdmin):
-
     list_display = ('pet_id', 'item_id')
     list_filter = ('pet_id', 'item_id')
 
 
 class PetFoodsAdmin(admin.ModelAdmin):
-
     list_display = ('pet_id', 'item_id')
     list_filter = ('pet_id', 'item_id')
 
 
 class PetItemsAdmin(admin.ModelAdmin):
-
     list_display = ('pet_id', 'item_id')
     list_filter = ('pet_id', 'item_id')
 
 
 class PetVocalsAdmin(admin.ModelAdmin):
-
     list_display = ('pet_id', 'type', 'message')
     list_filter = ('pet_id', 'type', 'message')
 
 
 class PollsAdmin(admin.ModelAdmin):
-
     list_display = ('title', 'thanks_message', 'reward_badge')
     list_filter = ('title', 'thanks_message', 'reward_badge')
 
 
 class PollsAnswersAdmin(admin.ModelAdmin):
-
     list_display = ('poll_id', 'user_id', 'question_id', 'answer')
     list_filter = ('poll_id', 'user_id', 'question_id', 'answer')
 
 
 class PollsQuestionsAdmin(admin.ModelAdmin):
-
     list_display = (
         'parent_id',
         'poll_id',
@@ -1291,24 +1235,20 @@ class PollsQuestionsAdmin(admin.ModelAdmin):
 
 
 class RecyclerPrizesAdmin(admin.ModelAdmin):
-
     list_display = ('rarity', 'item_id')
     list_filter = ('rarity', 'item_id')
 
 
 class RoomBansAdmin(admin.ModelAdmin):
-
     list_display = ('room_id', 'user_id', 'ends')
     list_filter = ('room_id', 'user_id', 'ends')
 
 
 class RoomEnterLogAdmin(admin.ModelAdmin):
-
     list_display = ('room_id', 'user_id', 'timestamp', 'exit_timestamp')
 
 
 class RoomGameScoresAdmin(admin.ModelAdmin):
-
     list_display = (
         'room_id',
         'game_start_timestamp',
@@ -1330,7 +1270,6 @@ class RoomGameScoresAdmin(admin.ModelAdmin):
 
 
 class RoomModelsAdmin(admin.ModelAdmin):
-
     list_display = (
         'name',
         'door_x',
@@ -1344,7 +1283,6 @@ class RoomModelsAdmin(admin.ModelAdmin):
 
 
 class RoomModelsCustomAdmin(admin.ModelAdmin):
-
     list_display = (
         'id',
         'name',
@@ -1358,13 +1296,11 @@ class RoomModelsCustomAdmin(admin.ModelAdmin):
 
 
 class RoomMutesAdmin(admin.ModelAdmin):
-
     list_display = ('room_id', 'user_id', 'ends')
     list_filter = ('room_id', 'user_id', 'ends')
 
 
 class RoomPromotionsAdmin(admin.ModelAdmin):
-
     list_display = (
         'room_id',
         'title',
@@ -1384,13 +1320,11 @@ class RoomPromotionsAdmin(admin.ModelAdmin):
 
 
 class RoomRightsAdmin(admin.ModelAdmin):
-
     list_display = ('room_id', 'user_id')
     list_filter = ('room_id', 'user_id')
 
 
 class RoomTradeLogAdmin(admin.ModelAdmin):
-
     list_display = (
         'user_one_id',
         'user_two_id',
@@ -1412,31 +1346,26 @@ class RoomTradeLogAdmin(admin.ModelAdmin):
 
 
 class RoomTradeLogItemsAdmin(admin.ModelAdmin):
-
     list_display = ('id', 'item_id', 'user_id')
     list_filter = ('id', 'item_id', 'user_id')
 
 
 class RoomTraxPlaylistAdmin(admin.ModelAdmin):
-
     list_display = ('room_id', 'item_id')
     list_filter = ('room_id', 'item_id')
 
 
 class RoomVotesAdmin(admin.ModelAdmin):
-
     list_display = ('user_id', 'room_id')
     list_filter = ('user_id', 'room_id')
 
 
 class RoomWordfilterAdmin(admin.ModelAdmin):
-
     list_display = ('room_id', 'word')
     list_filter = ('room_id', 'word')
 
 
 class RoomsAdmin(admin.ModelAdmin):
-
     list_display = (
         'id',
         'owner_id',
@@ -1486,13 +1415,11 @@ class RoomsAdmin(admin.ModelAdmin):
 
 
 class SanctionLevelsAdmin(admin.ModelAdmin):
-
     list_display = ('level', 'type', 'hour_length', 'probation_days')
     list_filter = ('level', 'type', 'hour_length', 'probation_days')
 
 
 class SanctionsAdmin(admin.ModelAdmin):
-
     list_display = (
         'habbo_id',
         'sanction_level',
@@ -1514,26 +1441,22 @@ class SanctionsAdmin(admin.ModelAdmin):
 
 
 class SoundtracksAdmin(admin.ModelAdmin):
-
     list_display = ('code', 'name', 'author', 'track', 'length')
     list_filter = ('code', 'name', 'author', 'track')
     search_fields = ('name',)
 
 
 class SpecialEnablesAdmin(admin.ModelAdmin):
-
     list_display = ('effect_id', 'min_rank')
     list_filter = ('effect_id', 'min_rank')
 
 
 class SupportCfhCategoriesAdmin(admin.ModelAdmin):
-
     list_display = ('id', 'name_internal', 'name_external')
     list_filter = ('id', 'name_internal', 'name_external')
 
 
 class SupportCfhTopicsAdmin(admin.ModelAdmin):
-
     list_display = (
         'id',
         'category_id',
@@ -1547,14 +1470,12 @@ class SupportCfhTopicsAdmin(admin.ModelAdmin):
 
 
 class SupportIssueCategoriesAdmin(admin.ModelAdmin):
-
     list_display = ('id', 'name')
     list_filter = ('id', 'name')
     search_fields = ('name',)
 
 
 class SupportIssuePresetsAdmin(admin.ModelAdmin):
-
     list_display = (
         'id',
         'category',
@@ -1577,13 +1498,11 @@ class SupportIssuePresetsAdmin(admin.ModelAdmin):
 
 
 class SupportPresetsAdmin(admin.ModelAdmin):
-
     list_display = ('id', 'type', 'preset')
     list_filter = ('id', 'type', 'preset')
 
 
 class SupportTicketsAdmin(admin.ModelAdmin):
-
     list_display = (
         'id',
         'state',
@@ -1621,13 +1540,11 @@ class SupportTicketsAdmin(admin.ModelAdmin):
 
 
 class UserWindowSettingsAdmin(admin.ModelAdmin):
-
     list_display = ('user_id', 'x', 'y', 'width', 'height', 'open_searches')
     list_filter = ('user_id', 'x', 'y', 'width', 'height', 'open_searches')
 
 
 class UsersAdmin(admin.ModelAdmin):
-
     list_display = (
         'id',
         'username',
@@ -1678,36 +1595,30 @@ class UsersAdmin(admin.ModelAdmin):
 
 
 class UsersAchievementsAdmin(admin.ModelAdmin):
-
     list_display = ('user_id', 'achievement_name', 'progress')
     list_filter = ('user_id', 'progress')
 
 
 class UsersAchievementsQueueAdmin(admin.ModelAdmin):
-
     list_display = ('user_id', 'achievement_id', 'amount')
     list_filter = ('user_id', 'achievement_id', 'amount')
 
 
 class UsersBadgesAdmin(admin.ModelAdmin):
-
     list_display = ('id', 'user_id', 'slot_id', 'badge_code')
 
 
 class UsersClothingAdmin(admin.ModelAdmin):
-
     list_display = ('user_id', 'clothing_id')
     list_filter = ('user_id', 'clothing_id')
 
 
 class UsersCurrencyAdmin(admin.ModelAdmin):
-
     list_display = ('user_id', 'type', 'amount')
     list_filter = ('user_id', 'type', 'amount')
 
 
 class UsersEffectsAdmin(admin.ModelAdmin):
-
     list_display = (
         'user_id',
         'effect',
@@ -1725,25 +1636,21 @@ class UsersEffectsAdmin(admin.ModelAdmin):
 
 
 class UsersFavoriteRoomsAdmin(admin.ModelAdmin):
-
     list_display = ('user_id', 'room_id')
     list_filter = ('user_id', 'room_id')
 
 
 class UsersIgnoredAdmin(admin.ModelAdmin):
-
     list_display = ('user_id', 'target_id')
     list_filter = ('user_id', 'target_id')
 
 
 class UsersNavigatorSettingsAdmin(admin.ModelAdmin):
-
     list_display = ('user_id', 'caption', 'list_type', 'display')
     list_filter = ('user_id', 'caption', 'list_type', 'display')
 
 
 class UsersPetsAdmin(admin.ModelAdmin):
-
     list_display = (
         'id',
         'user_id',
@@ -1786,19 +1693,16 @@ class UsersPetsAdmin(admin.ModelAdmin):
 
 
 class UsersRecipesAdmin(admin.ModelAdmin):
-
     list_display = ('user_id', 'recipe')
     list_filter = ('user_id', 'recipe')
 
 
 class UsersSavedSearchesAdmin(admin.ModelAdmin):
-
     list_display = ('id', 'search_code', 'filter', 'user_id')
     list_filter = ('id', 'search_code', 'filter', 'user_id')
 
 
 class UsersSettingsAdmin(admin.ModelAdmin):
-
     list_display = (
         'id',
         'user_id',
@@ -1900,7 +1804,6 @@ class UsersSettingsAdmin(admin.ModelAdmin):
 
 
 class UsersTargetOfferPurchasesAdmin(admin.ModelAdmin):
-
     list_display = (
         'user_id',
         'offer_id',
@@ -1912,19 +1815,16 @@ class UsersTargetOfferPurchasesAdmin(admin.ModelAdmin):
 
 
 class UsersWardrobeAdmin(admin.ModelAdmin):
-
     list_display = ('id', 'user_id', 'slot_id', 'look', 'gender')
     list_filter = ('id', 'user_id', 'slot_id', 'look', 'gender')
 
 
 class VoucherHistoryAdmin(admin.ModelAdmin):
-
     list_display = ('id', 'voucher_id', 'user_id', 'timestamp')
     list_filter = ('id', 'voucher_id', 'user_id', 'timestamp')
 
 
 class VouchersAdmin(admin.ModelAdmin):
-
     list_display = (
         'id',
         'code',
@@ -1948,25 +1848,22 @@ class VouchersAdmin(admin.ModelAdmin):
 
 
 class WiredRewardsGivenAdmin(admin.ModelAdmin):
-
     list_display = ('wired_item', 'user_id', 'reward_id', 'timestamp')
     list_filter = ('wired_item', 'user_id', 'reward_id', 'timestamp')
 
 
 class WordfilterAdmin(admin.ModelAdmin):
-
     list_display = ('key', 'replacement', 'hide', 'report', 'mute')
     list_filter = ('key', 'replacement', 'hide', 'report', 'mute')
 
 
 class YoutubePlaylistsAdmin(admin.ModelAdmin):
-
     list_display = ('item_id', 'playlist_id', 'order')
     list_filter = ('item_id', 'order')
 
 
 def _register(model, admin_class):
-    admin.site.register(model, admin_class)
+    admin_site.register(model, admin_class)
 
 
 _register(models.Achievements, AchievementsAdmin)
